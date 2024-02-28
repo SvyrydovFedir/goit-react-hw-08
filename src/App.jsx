@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { ContactForm } from "./ContactForm/ContactForm";
 import { SearchBox } from "./SearchBox/SearchBox";
@@ -9,6 +9,17 @@ export const App = () => {
   const [searchBar, setSearchBar] = useState("");
   const [contactList, setContactList] = useState(contacts);
 
+  useEffect(() => {
+    const storedContacts = JSON.parse(localStorage.getItem("contacts"));
+    if (storedContacts) {
+      setContactList(storedContacts);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contactList));
+  }, [contactList]);
+
   const handleSearch = (evt) => {
     setSearchBar(evt.target.value);
   };
@@ -17,17 +28,25 @@ export const App = () => {
     setContactList([...contactList, newContact]);
   };
 
-  const filteredContacts = contacts.filter((contact) =>
+  const handleRemoveContact = (contactId) => {
+    setContactList(prevContacts => {
+      return prevContacts.filter(contact => contact.id !== contactId)
+    })
+  };
+
+  const filteredContacts = contactList.filter((contact) =>
     contact.name.toLowerCase().includes(searchBar.toLowerCase())
   );
-  console.log(contactList);
 
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={handleAddContact} />
       <SearchBox value={searchBar} onChange={handleSearch} />
-      <ContactList contacts={contactList} filteredContacts={filteredContacts} />
+      <ContactList
+        filteredContacts={filteredContacts}
+        onRemove={handleRemoveContact}
+      />
     </div>
   );
 };
