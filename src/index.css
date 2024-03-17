@@ -1,8 +1,10 @@
 body {
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
   line-height: 1.5;
   margin: 0;
-  /* background-color: #858585; */
+  background-color: #141414;
+  color: whitesmoke;
+  letter-spacing: 0.06em;
 }
 
 h1,
@@ -28,5 +30,5 @@ img {
 }
 
 a {
-  list-style: none;
+  text-decoration: none;
 }
