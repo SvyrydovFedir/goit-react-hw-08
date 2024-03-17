@@ -19,7 +19,7 @@ export const getMovieById = async (controller, id) => {
     signal: controller.signal,
     headers: {
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNWM0ZGRlOWVmZDkxZDQyODRiMzI1YmZiOWRjYjZiYiIsInN1YiI6IjY1Y2JiNjZkOGM0NGI5MDE4MDk0MTU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uprme_0UI87pLZa_NGdmKRSH8vOt8labpp7A0pO3uvA',
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTNiYjdmZTczYWIzZmI4MWE5NmFjNDI1ODgxMmVjMCIsInN1YiI6IjY1ZjY0MjIyNTkwN2RlMDE3Y2U1ZDIzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oDJleg6vePYHbJXcaiOLH12uUkxhk8oz2v69whqf0cc',
     },
   };
   const response = await axios.get(`movie/${id}`, options);
@@ -31,7 +31,7 @@ export const getMovieCast = async (controller, id) => {
     signal: controller.signal,
     headers: {
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNWM0ZGRlOWVmZDkxZDQyODRiMzI1YmZiOWRjYjZiYiIsInN1YiI6IjY1Y2JiNjZkOGM0NGI5MDE4MDk0MTU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uprme_0UI87pLZa_NGdmKRSH8vOt8labpp7A0pO3uvA',
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTNiYjdmZTczYWIzZmI4MWE5NmFjNDI1ODgxMmVjMCIsInN1YiI6IjY1ZjY0MjIyNTkwN2RlMDE3Y2U1ZDIzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oDJleg6vePYHbJXcaiOLH12uUkxhk8oz2v69whqf0cc',
     },
   };
   const response = await axios.get(`movie/${id}/credits`, options);
@@ -43,7 +43,7 @@ export const getMovieReview = async (controller, id) => {
     signal: controller.signal,
     headers: {
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNWM0ZGRlOWVmZDkxZDQyODRiMzI1YmZiOWRjYjZiYiIsInN1YiI6IjY1Y2JiNjZkOGM0NGI5MDE4MDk0MTU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uprme_0UI87pLZa_NGdmKRSH8vOt8labpp7A0pO3uvA',
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTNiYjdmZTczYWIzZmI4MWE5NmFjNDI1ODgxMmVjMCIsInN1YiI6IjY1ZjY0MjIyNTkwN2RlMDE3Y2U1ZDIzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oDJleg6vePYHbJXcaiOLH12uUkxhk8oz2v69whqf0cc',
     },
   };
   const response = await axios.get(`movie/${id}/reviews`, options);
@@ -58,7 +58,7 @@ export const getMovieByQuery = async (controller, query) => {
     },
     headers: {
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNWM0ZGRlOWVmZDkxZDQyODRiMzI1YmZiOWRjYjZiYiIsInN1YiI6IjY1Y2JiNjZkOGM0NGI5MDE4MDk0MTU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uprme_0UI87pLZa_NGdmKRSH8vOt8labpp7A0pO3uvA',
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTNiYjdmZTczYWIzZmI4MWE5NmFjNDI1ODgxMmVjMCIsInN1YiI6IjY1ZjY0MjIyNTkwN2RlMDE3Y2U1ZDIzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oDJleg6vePYHbJXcaiOLH12uUkxhk8oz2v69whqf0cc',
     },
   };
   const response = await axios.get(`search/movie`, options);

@@ -12,7 +12,6 @@ export default function HomePage() {
     async function fetchData() {
       try {
         const response = await getTrendingMovies(controller);
-        // console.log(response);
         setTrendings(response.results);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
@@ -31,7 +30,7 @@ export default function HomePage() {
   return (
     <div className={css.container}>
       <h1 className={css.title}>Trending movies today</h1>
-      {error && <p>OPPPPPSSSSSSSSSSSS... UNKNOWN ERROR!</p>}
+      {error && <p>O0PS... ERROR HAPPENED!</p>}
       {!error && <MovieList data={trendings} />}
     </div>
   );
