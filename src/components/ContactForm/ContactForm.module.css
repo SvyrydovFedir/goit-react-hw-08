@@ -1,4 +1,32 @@
-.formGroup {
-    display: flex;
-    flex-direction: column;
+.label {
+  display: block;
+}
+
+.button {
+  display: block;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.error {
+  display: block;
+  color: orangered;
+}
+
+.field {
+  margin-bottom: 10px;
+  height: 20px;
+  width: 200px;
+  border: 1px solid #ACACAC;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.container {
+  border: 1px solid #ACACAC;
+  border-radius: 8px;
+  margin: 0 240px;
+  padding: 30px;
+  margin-bottom: 40px;
+  width: 500px;
 }

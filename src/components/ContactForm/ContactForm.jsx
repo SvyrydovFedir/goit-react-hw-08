@@ -1,33 +1,32 @@
-import { useId } from "react";
-import { nanoid } from "nanoid";
-import * as Yup from "yup";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import css from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { useId } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import css from './ContactForm.module.css';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsOps';
 
 export const ContactForm = () => {
   const dispath = useDispatch();
   const inputNameId = useId();
-  const inputNumberId = useId();
+  const inputPhoneId = useId();
   const contactSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, "Name must be at least 2 symbols")
-      .max(20, "Max length is 20")
-      .required("Name is required")
-      .matches("^[a-zA-Z]+$", "Only alphabet symbols"),
-    number: Yup.number()
+      .min(2, 'Name must be at least 2 symbols')
+      .max(20, 'Max length is 20')
+      .required('Name is required')
+      .matches('^[a-zA-Z]+$', 'Only alphabet symbols'),
+    phone: Yup.number()
       .typeError("That doesn't look like a phone number")
       .positive("A phone number can't start with a minus")
       .integer("A phone number can't include a decimal point")
-      .min(8, "Number must be at least 8 symbols")
-      .required("A phone number is required"),
+      .min(8, 'Number must be at least 8 symbols')
+      .required('A phone number is required'),
   });
 
   return (
-    <>
+    <div className={css.container}>
       <Formik
-        initialValues={{ name: "", number: "" }}
+        initialValues={{ name: '', phone: '' }}
         onSubmit={(values, action) => {
           dispath(addContact(values));
           action.resetForm();
@@ -35,23 +34,31 @@ export const ContactForm = () => {
         validationSchema={contactSchema}
       >
         <Form>
-          <div className={css.formGroup}>
-            <label htmlFor={inputNameId}>Name</label>
-            <Field type="text" name="name" id={inputNameId} />
-            <ErrorMessage name="name" component="span" className={css.error} />
-          </div>
-          <div className={css.formGroup}>
-            <label htmlFor={inputNumberId}>Number</label>
-            <Field type="text" name="number" id={inputNumberId} />
-            <ErrorMessage
-              name="number"
-              component="span"
-              className={css.error}
-            />
-          </div>
-          <button type="submit">Add Contact</button>
+          <label className={css.label} htmlFor={inputNameId}>
+            Name
+          </label>
+          <Field
+            className={css.field}
+            type="text"
+            name="name"
+            id={inputNameId}
+          ></Field>
+          <ErrorMessage className={css.error} name="name" component="span" />
+          <label className={css.label} htmlFor={inputPhoneId}>
+            Number
+          </label>
+          <Field
+            className={css.field}
+            type="tel"
+            name="phone"
+            id={inputPhoneId}
+          ></Field>
+          <ErrorMessage className={css.error} name="phone" component="span" />
+          <button className={css.button} type="submit">
+            Add contact
+          </button>
         </Form>
       </Formik>
-    </>
+    </div>
   );
 };

@@ -1,28 +1,50 @@
-import "./App.css";
-import { ContactForm } from "../ContactForm/ContactForm";
-import { SearchBox } from "../SearchBox/SearchBox";
-import { ContactList } from "../ContactList/ContactList";
-import { useSelector } from "react-redux";
-import { EmptyContacts } from "../EmptyContacts/EmptyContacts";
-import { selectContacts } from "../../redux/contactsSlice";
-import { selectNameFilter } from "../../redux/filtersSlice";
+import css from './App.module.css';
+import { ContactForm } from '../ContactForm/ContactForm';
+import { SearchBox } from '../SearchBox/SearchBox';
+import { ContactList } from '../ContactList/ContactList';
+import { useDispatch, useSelector } from 'react-redux';
+import { EmptyContacts } from '../EmptyContacts/EmptyContacts';
+import { useEffect } from 'react';
+import { fetchContacts } from '../../redux/contactsOps';
+import {
+  selectContacts,
+  selectFilteredContacts,
+  selectLoading,
+} from '../../redux/selectors';
+import { Watch } from 'react-loader-spinner';
 
-export const App = () => {
-  const reduxUsers = useSelector(selectContacts);
-  const reduxInputFilter = useSelector(selectNameFilter);
-  const visibleUsers = reduxUsers.filter((user) =>
-    user.name.toLowerCase().includes(reduxInputFilter.toLowerCase())
-  );
+function App() {
+  const dispatch = useDispatch();
+  const users = useSelector(selectContacts);
+  const visibleUsers = useSelector(selectFilteredContacts);
+  const loading = useSelector(selectLoading);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div>
-      <h1>Phonebook</h1>
+      <h1 className={css.title}>Phonebook</h1>
       <ContactForm />
       <SearchBox />
       <ContactList />
-      {(reduxUsers.length === 0 || visibleUsers.length === 0) && (
-        <EmptyContacts />
+      {(users.length === 0 || visibleUsers.length === 0) && <EmptyContacts />}
+      {loading && (
+        <Watch
+          visible={true}
+          height="120"
+          width="120"
+          radius="48"
+          color="#4fa94d"
+          ariaLabel="watch-loading"
+          wrapperStyle={{}}
+          wrapperClass={css.loader}
+        />
       )}
+      <div className={loading ? css.overlay : css.none}></div>
     </div>
   );
-};
+}
+
+export default App;
