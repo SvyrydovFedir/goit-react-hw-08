@@ -4,8 +4,8 @@ import { SearchBox } from "../SearchBox/SearchBox";
 import { ContactList } from "../ContactList/ContactList";
 import { useSelector } from "react-redux";
 import { EmptyContacts } from "../EmptyContacts/EmptyContacts";
-import { selectContacts } from "../redux/contactsSlice";
-import { selectNameFilter } from "../redux/filtersSlice";
+import { selectContacts } from "../../redux/contactsSlice";
+import { selectNameFilter } from "../../redux/filtersSlice";
 
 export const App = () => {
   const reduxUsers = useSelector(selectContacts);
