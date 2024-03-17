@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import css from './ContactForm.module.css';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
+import { addContact } from '../../redux/contacts/contactsOps';
 
 export const ContactForm = () => {
   const dispath = useDispatch();
@@ -15,7 +15,7 @@ export const ContactForm = () => {
       .max(20, 'Max length is 20')
       .required('Name is required')
       .matches('^[a-zA-Z]+$', 'Only alphabet symbols'),
-    phone: Yup.number()
+    number: Yup.number()
       .typeError("That doesn't look like a phone number")
       .positive("A phone number can't start with a minus")
       .integer("A phone number can't include a decimal point")
@@ -26,7 +26,7 @@ export const ContactForm = () => {
   return (
     <div className={css.container}>
       <Formik
-        initialValues={{ name: '', phone: '' }}
+        initialValues={{ name: '', number: '' }}
         onSubmit={(values, action) => {
           dispath(addContact(values));
           action.resetForm();
@@ -50,10 +50,10 @@ export const ContactForm = () => {
           <Field
             className={css.field}
             type="tel"
-            name="phone"
+            name="number"
             id={inputPhoneId}
           ></Field>
-          <ErrorMessage className={css.error} name="phone" component="span" />
+          <ErrorMessage className={css.error} name="number" component="span" />
           <button className={css.button} type="submit">
             Add contact
           </button>

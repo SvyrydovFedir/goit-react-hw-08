@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.username {
+  font-weight: 700;
+}
+
+.button {
+  display: block;
+  height: 30px;
+  width: 120px;
+  border-radius: 20px;
+  cursor: pointer;
+}

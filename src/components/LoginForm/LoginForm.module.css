@@ -6,11 +6,6 @@
   display: block;
   border-radius: 20px;
   cursor: pointer;
-  transition: border 150ms ease-in;
-}
-
-.button:hover {
-  border: 1px solid rgb(108, 163, 86);
 }
 
 .error {
@@ -27,10 +22,8 @@
   padding-left: 10px;
 }
 
-.container {
-  border: 1px solid #212121;
-  border-radius: 8px;
-  padding: 30px;
-  margin-bottom: 40px;
-  width: 500px;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

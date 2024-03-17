@@ -2,15 +2,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
-  border: 1px solid #ACACAC;
+  border: 1px solid #212121;
   border-radius: 10px;
   padding: 5px;
+  flex-basis: calc((100% - 26px * 3) / 4);
 }
 
 .button {
   border-radius: 20px;
   cursor: pointer;
+  transition: border 150ms ease-in;
+}
+
+.button:hover {
+  border: 1px solid #f37878;
 }
 
 .info {
